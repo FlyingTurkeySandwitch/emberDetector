@@ -1,0 +1,71 @@
+# --- Python / env ---
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.ipynb_checkpoints/
+
+# --- Build / dist / tooling ---
+build/
+dist/
+*.spec
+*.manifest
+
+# --- IDE/editor ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Tests / coverage / caches ---
+.pytest_cache/
+.tox/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# --- Logs ---
+*.log
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Large archives ---
+*.tar
+*.tar.bz2
+*.bz2
+*.zip
+*.7z
+*.gz
+
+# --- Data & models (keep folder, ignore contents) ---
+data/**
+!data/.gitignore
+!data/README.md
+!data/.gitkeep
+
+# Vectorized features & raw JSONL (wherever they appear)
+**/X_*.dat
+**/y_*.dat
+**/train_features_*.jsonl
+**/test_features.jsonl
+
+# Trained models
+**/ember_model_*.txt
+*.model
+*.bin
+*.ckpt
+*.pkl
+*.joblib
