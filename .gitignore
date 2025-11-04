@@ -3,6 +3,7 @@
 venv/
 env/
 ENV/
+samples/
 __pycache__/
 *.py[cod]
 *.pyo
