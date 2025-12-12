@@ -551,17 +551,18 @@ class PEFeatureExtractor(object):
             raise Exception(f"EMBER feature version must be 1 or 2. Not {feature_version}")
         self.dim = sum([fe.dim for fe in self.features])
 
-    def raw_features(self, bytez):
-        lief_errors = (lief.bad_format, lief.bad_file, lief.pe_error, lief.parser_error, lief.read_out_of_bound,
-                       RuntimeError)
-        try:
-            lief_binary = lief.PE.parse(list(bytez))
-        except lief_errors as e:
-            print("lief error: ", str(e))
-            lief_binary = None
-        except Exception:  # everything else (KeyboardInterrupt, SystemExit, ValueError):
-            raise
 
+    def raw_features(self, bytez):
+    
+        lief_binary = lief.parse(bytez)
+
+        # Check if the returned object is an error
+        if isinstance(lief_binary, lief.lief_errors):
+            lief_binary = None
+            if self.debug:
+                print(f"LIEF parsing error: {lief_binary}")
+
+       
         features = {"sha256": hashlib.sha256(bytez).hexdigest()}
         features.update({fe.name: fe.raw_features(bytez, lief_binary) for fe in self.features})
         return features

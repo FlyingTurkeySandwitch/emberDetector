@@ -3,8 +3,10 @@ import os, numpy as np, lightgbm as lgb
 from sklearn.metrics import accuracy_score, roc_auc_score, classification_report, confusion_matrix, roc_curve, average_precision_score
 import matplotlib.pyplot as plt
 
-DATA_DIR   = r"data\ember2018"
-MODEL_PATH = os.path.join(DATA_DIR, "ember_model_2018.txt")
+DATA_DIR   = r"data/ember2018"
+MODEL_PATH = "data/ember2018/ember_model_2018.txt"
+
+
 FEATURE_DIM = 2381
 ARTIFACTS = os.path.join(DATA_DIR, "artifacts"); os.makedirs(ARTIFACTS, exist_ok=True)
 
